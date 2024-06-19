@@ -1,0 +1,19 @@
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: build-push-pipeline
+spec:
+  resources:
+    - name: source-repo
+      type: git
+  tasks:
+    - name: build-and-push
+      taskRef:
+        name: build-push-task
+      params:
+        - name: imageUrl
+          value: docker.io/narasimhaswamy76/myrailsapp:latest
+      resources:
+        inputs:
+          - name: source
+            resource: source-repo

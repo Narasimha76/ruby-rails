@@ -1,0 +1,11 @@
+apiVersion: tekton.dev/v1beta1
+kind: PipelineRun
+metadata:
+  name: build-push-pipeline-run
+spec:
+  pipelineRef:
+    name: build-push-pipeline  # Ensure this matches your Pipeline name
+  resources:
+    - name: source-repo
+      resourceRef:
+        name: source-repo  # Ensure this matches your PipelineResource name

@@ -1,0 +1,42 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"v1","kind":"Service","metadata":{"annotations":{},"labels":{"app":"tekton-dashboard","app.kubernetes.io/component":"dashboard","app.kubernetes.io/instance":"default","app.kubernetes.io/name":"dashboard","app.kubernetes.io/part-of":"tekton-dashboard","app.kubernetes.io/version":"v0.18.0","dashboard.tekton.dev/release":"v0.18.0","version":"v0.18.0"},"name":"tekton-dashboard","namespace":"tekton-pipelines"},"spec":{"ports":[{"name":"http","port":9097,"protocol":"TCP","targetPort":9097}],"selector":{"app.kubernetes.io/component":"dashboard","app.kubernetes.io/instance":"default","app.kubernetes.io/name":"dashboard","app.kubernetes.io/part-of":"tekton-dashboard"}}}
+  creationTimestamp: "2024-06-18T12:31:06Z"
+  labels:
+    app: tekton-dashboard
+    app.kubernetes.io/component: dashboard
+    app.kubernetes.io/instance: default
+    app.kubernetes.io/name: dashboard
+    app.kubernetes.io/part-of: tekton-dashboard
+    app.kubernetes.io/version: v0.18.0
+    dashboard.tekton.dev/release: v0.18.0
+    version: v0.18.0
+  name: tekton-dashboard
+  namespace: tekton-pipelines
+  resourceVersion: "9475"
+  uid: 7988e1c1-8a41-4cc8-ae9b-3c958cda3b7e
+spec:
+  clusterIP: 10.96.113.197
+  clusterIPs:
+  - 10.96.113.197
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+  - name: http
+    port: 9097
+    protocol: TCP
+    targetPort: 9097
+  selector:
+    app.kubernetes.io/component: dashboard
+    app.kubernetes.io/instance: default
+    app.kubernetes.io/name: dashboard
+    app.kubernetes.io/part-of: tekton-dashboard
+  sessionAffinity: None
+  type: ClusterIP
+status:
+  loadBalancer: {}

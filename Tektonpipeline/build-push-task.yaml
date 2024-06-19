@@ -1,0 +1,25 @@
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: build-push-task
+spec:
+  params:
+    - name: pathToDockerFile
+      type: string
+      description: The path to the Dockerfile to build
+      default: ./Dockerfile
+    - name: imageUrl
+      type: string
+      description: The name of the image to push
+      value: docker.io/narasimhaswamy76/myrailsapp:latest
+  resources:
+    inputs:
+      - name: source
+        type: git
+  steps:
+    - name: build-and-push
+      image: gcr.io/kaniko-project/executor:latest
+      args:
+        - --dockerfile=$(params.pathToDockerFile)
+        - --destination=$(params.imageUrl)
+        - --context=/workspace/source/
